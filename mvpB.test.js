@@ -14,6 +14,15 @@ describe('Sprint 7 Challenge Learner Tests', () => {
     [4] sum('1', 2) // returns 3
     [5] sum('10', '3') // returns 13
   */
+  test('Sum of numbers', () => {
+    expect(sum()).toThrow('pass valid numbers');
+    expect(sum(2,"seven")).toThrow('pass valid numbers');
+    expect(sum(1,3)).toBe(4);
+    expect(sum('1',2)).toBe(3);
+    expect(sum('10','3')).toBe(13);
+    
+  })
+
 
   /*
   👉 TASK 2 - Integration Testing of HelloWorld component at the bottom of this module
@@ -30,7 +39,21 @@ describe('Sprint 7 Challenge Learner Tests', () => {
     [6] renders a text that includes "javaScript is pretty" (use exact = false)
   */
   test('you can comment out this test', () => {
-    expect(true).toBe(false)
+    render(<HelloWorld/>)
+    const homeLink = screen.queryByText('Home')
+    expect(homeLink).toBeInTheDocument();
+    const aboutLink = screen.queryByText('About')
+    expect(aboutLink).toBeInTheDocument();
+    const blogLink = screen.queryByText('Blog')
+    expect(blogLink).toBeInTheDocument();
+    const truthText = screen.queryByText('The Truth');
+    expect(truthText).toBeInTheDocument();
+    const jsText = screen.queryByText('JavaScript is pretty awesome');
+    expect(jsText).toBeInTheDocument();
+    const partialText = screen.queryByText(/javaScript is pretty/i);
+    expect(partialText).toBeInTheDocument();
+
+
   })
 })
 
